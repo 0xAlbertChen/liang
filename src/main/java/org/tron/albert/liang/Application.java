@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
-import org.tron.albert.liang.service.GenNewPkService;
+import org.tron.albert.liang.disruptor.CalSameDisruptorManager;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -47,8 +47,10 @@ public class Application {
         }
 
 
-        GenNewPkService genNewPkService = ctx.getBean(GenNewPkService.class);
+        CalSameDisruptorManager genNewPkService = ctx.getBean(CalSameDisruptorManager.class);
         genNewPkService.run();
+//        GenNewPkService genNewPkService = ctx.getBean(GenNewPkService.class);
+//        genNewPkService.run();
 
     }
 

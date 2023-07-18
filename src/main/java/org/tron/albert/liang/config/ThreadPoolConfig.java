@@ -13,7 +13,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 public class ThreadPoolConfig {
 
     @Bean(name = "threadPoolTaskExecutor")
-    public ThreadPoolTaskExecutor analyzeTradeThreadPoolTaskExecutor() {
+    public static ThreadPoolTaskExecutor analyzeTradeThreadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(140);
         executor.setMaxPoolSize(280);

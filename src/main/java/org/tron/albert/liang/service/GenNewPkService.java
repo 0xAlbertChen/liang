@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.tron.albert.liang.events.CustomSpringEventPublisher;
 import org.tron.albert.liang.key.KeyPair;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import static org.tron.albert.liang.config.SystemConstants.SAME_CHARACTER_COUNT;
 
 /**
@@ -15,14 +17,19 @@ import static org.tron.albert.liang.config.SystemConstants.SAME_CHARACTER_COUNT;
 @Service
 public class GenNewPkService {
 
-    public static final int FOUR_SAME = 3;
+    public static final AtomicLong GenNewPkService_counter = new AtomicLong(0);
+
     private final CustomSpringEventPublisher customSpringEventPublisher;
+
+    public static final int FOUR_SAME = 3;
+
 
     public GenNewPkService(CustomSpringEventPublisher customSpringEventPublisher) {
         this.customSpringEventPublisher = customSpringEventPublisher;
     }
 
-    private static boolean checkSame(int sameNumber, char[] charArray) {
+
+    public static boolean checkSame(int sameNumber, char[] charArray) {
         boolean same = false;
         for (int j = 0; j < sameNumber; j++) {
             char after = charArray[charArray.length - j - 1];
@@ -39,7 +46,7 @@ public class GenNewPkService {
     public void run() {
 
         for (; ; ) {
-
+            GenNewPkService_counter.incrementAndGet();
             KeyPair keyPair = KeyPair.generate();
             String privateKey = keyPair.toPrivateKey();
             String base58CheckAddress = keyPair.toBase58CheckAddress();
@@ -51,6 +58,7 @@ public class GenNewPkService {
             if (checkSame(FOUR_SAME, originalCharArray)) {
                 log.info("FOUR_SAME {} base58CheckAddress: {}", FOUR_SAME + 1, base58CheckAddress);
                 customSpringEventPublisher.publishCustomEvent(base58CheckAddress + "," + privateKey);
+                continue;
             } else if (checkSame(SAME_CHARACTER_COUNT - 1, lowerCaseCharArray)) {
                 log.info("SAME_CHARACTER_COUNT {} base58CheckAddress: {}", SAME_CHARACTER_COUNT, base58CheckAddress);
                 customSpringEventPublisher.publishCustomEvent(base58CheckAddress + "," + privateKey);
@@ -59,4 +67,5 @@ public class GenNewPkService {
         }
 
     }
+
 }
