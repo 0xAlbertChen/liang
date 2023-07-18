@@ -32,6 +32,9 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok:1.18.28'
 	annotationProcessor 'org.projectlombok:lombok:1.18.28'
+	// https://mvnrepository.com/artifact/com.lmax/disruptor
+	implementation group: 'com.lmax', name: 'disruptor', version: '3.4.4'
+
 
 	testCompileOnly 'org.projectlombok:lombok:1.18.28'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'

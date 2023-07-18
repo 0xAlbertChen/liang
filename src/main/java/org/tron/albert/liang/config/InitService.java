@@ -3,7 +3,7 @@ package org.tron.albert.liang.config;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.tron.albert.liang.events.CustomSpringEventPublisher;
+import org.tron.albert.liang.service.GenNewPkService;
 
 /**
  * @author tieJiang
@@ -13,17 +13,16 @@ import org.tron.albert.liang.events.CustomSpringEventPublisher;
 @Slf4j
 public class InitService {
 
-    private final CustomSpringEventPublisher customSpringEventPublisher;
+    private final GenNewPkService genNewPkService;
 
-    public InitService(CustomSpringEventPublisher customSpringEventPublisher) {
-        this.customSpringEventPublisher = customSpringEventPublisher;
+    public InitService(GenNewPkService genNewPkService) {
+        this.genNewPkService = genNewPkService;
     }
 
     ;
 
     @PostConstruct
     public void init() {
-        customSpringEventPublisher.publishCustomEvent("init");
     }
 
 
