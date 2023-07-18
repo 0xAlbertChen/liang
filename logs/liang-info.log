@@ -1,0 +1,13 @@
+2023-07-18 17:53:14.634 INFO  11885 --- [main] org.tron.albert.liang.LiangApplication - Starting LiangApplication using Java 17.0.4 with PID 11885 (/Users/rafael/albertCode/liang/build/classes/java/main started by rafael in /Users/rafael/albertCode/liang)
+2023-07-18 17:53:14.637 INFO  11885 --- [main] org.tron.albert.liang.LiangApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-18 17:53:17.066 INFO  11885 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-07-18 17:53:17.091 INFO  11885 --- [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-18 17:53:17.095 INFO  11885 --- [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-07-18 17:53:17.095 INFO  11885 --- [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-07-18 17:53:17.290 INFO  11885 --- [main] o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-07-18 17:53:17.291 INFO  11885 --- [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2478 ms
+2023-07-18 17:53:17.383 INFO  11885 --- [main] o.t.albert.liang.events.CustomSpringEventPublisher - Publishing custom event. 
+2023-07-18 17:53:17.669 INFO  11885 --- [main] o.t.albert.liang.events.CustomSpringEventListener - Received spring custom event - init
+2023-07-18 17:53:18.130 INFO  11885 --- [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-07-18 17:53:18.160 INFO  11885 --- [main] o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-18 17:53:18.172 INFO  11885 --- [main] org.tron.albert.liang.LiangApplication - Started LiangApplication in 4.593 seconds (process running for 6.309)
