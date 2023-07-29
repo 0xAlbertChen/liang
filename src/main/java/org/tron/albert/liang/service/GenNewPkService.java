@@ -1,6 +1,7 @@
 package org.tron.albert.liang.service;
 
 
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.tron.albert.liang.events.CustomSpringEventPublisher;
@@ -48,12 +49,14 @@ public class GenNewPkService {
             char[] lowerCaseCharArray = lowerCase.toCharArray();
             char[] originalCharArray = base58CheckAddress.toCharArray();
 
+            String reverse = StrUtil.reverse(base58CheckAddress);
+            String message = reverse + "," + base58CheckAddress + "," + privateKey;
             if (checkSame(FOUR_SAME, originalCharArray)) {
-                log.info("FOUR_SAME {} base58CheckAddress: {}", FOUR_SAME + 1, base58CheckAddress);
-                customSpringEventPublisher.publishCustomEvent(base58CheckAddress + "," + privateKey);
+                log.info("FOUR_SAME {} base58CheckAddress: {},{}", FOUR_SAME + 1, reverse, base58CheckAddress);
+                customSpringEventPublisher.publishCustomEvent(message);
             } else if (checkSame(SAME_CHARACTER_COUNT - 1, lowerCaseCharArray)) {
-                log.info("SAME_CHARACTER_COUNT {} base58CheckAddress: {}", SAME_CHARACTER_COUNT, base58CheckAddress);
-                customSpringEventPublisher.publishCustomEvent(base58CheckAddress + "," + privateKey);
+                log.info("SAME_CHARACTER_COUNT {} base58CheckAddress: {},{}", SAME_CHARACTER_COUNT, reverse, base58CheckAddress);
+                customSpringEventPublisher.publishCustomEvent(message);
             }
 
         }
