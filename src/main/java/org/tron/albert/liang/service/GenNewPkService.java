@@ -50,7 +50,7 @@ public class GenNewPkService {
             char[] originalCharArray = base58CheckAddress.toCharArray();
 
             String reverse = StrUtil.reverse(base58CheckAddress);
-            String message = reverse + "," + base58CheckAddress + "," + privateKey;
+            String message = base58CheckAddress + "," + privateKey;
             if (checkSame(FOUR_SAME, originalCharArray)) {
                 log.info("FOUR_SAME {} base58CheckAddress: {},{}", FOUR_SAME + 1, reverse, base58CheckAddress);
                 customSpringEventPublisher.publishCustomEvent(message);
