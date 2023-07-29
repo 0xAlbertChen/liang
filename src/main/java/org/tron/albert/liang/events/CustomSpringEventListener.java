@@ -34,10 +34,9 @@ public class CustomSpringEventListener implements ApplicationListener<CustomSpri
         String message = event.getMessage();
         FileUtil.appendString(message + "\n", path, "UTF-8");
         try {
-            if (SEND_TO_SERVER) {
-                return;
+            if (Boolean.TRUE.equals(SEND_TO_SERVER)) {
+                sent2ServerService.sendToServer(message);
             }
-            sent2ServerService.sendToServer(message);
         } catch (Exception e) {
             log.error("Error sending to server: {}" + e.getMessage(), e);
         }

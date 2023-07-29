@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.tron.albert.liang.config.InitService.TRANSFER_PUBLIC_KEY_BASE_64;
+
 @Service
 @Slf4j
 public class Sent2ServerService {
 
-
-    public static String TRANSFER_PUBLIC_KEY_BASE_64 = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1z1zvLJWkiMmS9ftbt56T3JSe3jeFU+/KwcLGVwNQNkibQUwWhAzdppTFycTido7WFqKhgHJy8yzBH3dtAiqeir7jFXV7zSCscldMLAd1RTwsTJXEJlMMJ9CTzCc+V1g/U1kNNCfd8fS7ti0r9YRPXZEoZttMqcOIOl9ogQ6sDwIDAQAB";
 
 
     public static final String SOURCE = SystemUtil.getHostInfo().getAddress();

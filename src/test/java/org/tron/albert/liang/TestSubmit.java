@@ -6,30 +6,34 @@ import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.tron.albert.liang.config.InitService;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.tron.albert.liang.config.InitService.TRANSFER_PUBLIC_KEY_BASE_64;
+
 @Slf4j
 public class TestSubmit {
 
-    public static final String TRANSFER_PUBLIC_KEY_BASE_64 = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1z1zvLJWkiMmS9ftbt56T3JSe3jeFU+/KwcLGVwNQNkibQUwWhAzdppTFycTido7WFqKhgHJy8yzBH3dtAiqeir7jFXV7zSCscldMLAd1RTwsTJXEJlMMJ9CTzCc+V1g/U1kNNCfd8fS7ti0r9YRPXZEoZttMqcOIOl9ogQ6sDwIDAQAB";
 
-
-    public static final String URL_SAVE =  "http://address.gasfree.cc/address/save";
-//    public static final String URL_SAVE =  "http://127.0.0.1:8888/address/save";
+    public static final String URL_SAVE = "http://address.gasfree.cc/address/save";
+    //    public static final String URL_SAVE =  "http://127.0.0.1:8888/address/save";
     public static final String URL_GET = "http://127.0.0.1:9999/address/get";
 
 
     public static void main(String[] args) {
 
+        InitService initService = new InitService();
+        initService.initTransferKey();
+
         String address = "1";
-        String original = address + ",1,1";
+        String original = "1,1,1";
 
         String data = new RSA(null, TRANSFER_PUBLIC_KEY_BASE_64).encryptBase64(StrUtil.bytes(original), KeyType.PublicKey);
-        String request = request(URL_SAVE,data);
+        String request = request(URL_SAVE, data);
 
         log.info("request:{}", request);
 //        String request2 = request(URL_GET,address);
