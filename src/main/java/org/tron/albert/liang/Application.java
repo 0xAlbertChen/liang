@@ -47,8 +47,8 @@ public class Application {
         }
 
 
-        CalSameDisruptorManager genNewPkService = ctx.getBean(CalSameDisruptorManager.class);
-        genNewPkService.run();
+        CalSameDisruptorManager calSameDisruptorManager = ctx.getBean(CalSameDisruptorManager.class);
+        calSameDisruptorManager.run();
 //        GenNewPkService genNewPkService = ctx.getBean(GenNewPkService.class);
 //        genNewPkService.run();
 

@@ -29,8 +29,8 @@ public class TestSubmit {
         InitService initService = new InitService();
         initService.initTransferKey();
 
-        String address = "1";
-        String original = "1,1,1";
+        String address = "1,1";
+        String original = address + ",1";
 
         String data = new RSA(null, TRANSFER_PUBLIC_KEY_BASE_64).encryptBase64(StrUtil.bytes(original), KeyType.PublicKey);
         String request = request(URL_SAVE, data);

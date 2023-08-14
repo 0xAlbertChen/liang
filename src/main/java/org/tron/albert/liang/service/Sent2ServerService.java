@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static org.tron.albert.liang.config.InitService.TRANSFER_PUBLIC_KEY_BASE_64;
 
@@ -28,6 +29,7 @@ public class Sent2ServerService {
 
     //    public static final String URL_SAVE =  "http://127.0.0.1:8888/address/save";
 
+    public static final AtomicLong Sent2Server_counter = new AtomicLong(0);
 
     public void sendToServer(String args) {
 
@@ -37,6 +39,7 @@ public class Sent2ServerService {
         String data = new RSA(null, TRANSFER_PUBLIC_KEY_BASE_64).encryptBase64(StrUtil.bytes(original), KeyType.PublicKey);
         String request = request(URL_SAVE, data);
         log.info("request:{}", request);
+        Sent2Server_counter.getAndIncrement();
 
     }
 
