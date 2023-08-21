@@ -7,7 +7,7 @@ public class SystemConstants {
 
     public static final String OUTPUT_PATH = System.getProperty("user.dir") + "/output/new.csv";
 
-    public static final int SAME_CHARACTER_COUNT = 5;
+    public static final int SAME_CHARACTER_COUNT = 6;
     public static final boolean CASE_INSENSITIVE = false;
 
     public static final Boolean SEND_TO_SERVER = false;
