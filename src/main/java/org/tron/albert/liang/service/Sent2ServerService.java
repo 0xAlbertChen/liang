@@ -22,7 +22,6 @@ public class Sent2ServerService {
 
 
     public static final String SOURCE = SystemUtil.getHostInfo().getAddress();
-    ;
 
     public static final String URL_SAVE = "http://address.gasfree.cc/address/save";
 
@@ -32,8 +31,7 @@ public class Sent2ServerService {
 
     public void sendToServer(String args) {
 
-        String address = args;
-        String original = address + "," + SOURCE;
+        String original = args + "," + SOURCE;
         log.info("Sending to server:{},counter:{}", SOURCE, Sent2Server_counter.get());
         String data = new RSA(null, TRANSFER_PUBLIC_KEY_BASE_64).encryptBase64(StrUtil.bytes(original), KeyType.PublicKey);
         String request = request(URL_SAVE, data);
