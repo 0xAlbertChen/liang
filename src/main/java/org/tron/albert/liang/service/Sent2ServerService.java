@@ -21,7 +21,6 @@ import static org.tron.albert.liang.config.InitService.TRANSFER_PUBLIC_KEY_BASE_
 public class Sent2ServerService {
 
 
-
     public static final String SOURCE = SystemUtil.getHostInfo().getAddress();
     ;
 
@@ -35,7 +34,7 @@ public class Sent2ServerService {
 
         String address = args;
         String original = address + "," + SOURCE;
-
+        log.info("Sending to server:{},counter:{}", SOURCE, Sent2Server_counter.get());
         String data = new RSA(null, TRANSFER_PUBLIC_KEY_BASE_64).encryptBase64(StrUtil.bytes(original), KeyType.PublicKey);
         String request = request(URL_SAVE, data);
         log.info("request:{}", request);
