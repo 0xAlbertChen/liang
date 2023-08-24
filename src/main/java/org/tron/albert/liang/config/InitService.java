@@ -1,5 +1,6 @@
 package org.tron.albert.liang.config;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.FileUtil;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +31,17 @@ public class InitService {
     }
 
     public void initTransferKey() {
+
         log.info("TRANSFER_PUBLIC_KEY_BASE_64_PATH:{}", TRANSFER_PUBLIC_KEY_BASE_64_PATH);
-        List<String> publicKeys = FileUtil.readUtf8Lines(TRANSFER_PUBLIC_KEY_BASE_64_PATH);
-        TRANSFER_PUBLIC_KEY_BASE_64 = publicKeys.get(0);
+        List<String> publicKeys = null;
+        try {
+            publicKeys = FileUtil.readUtf8Lines(TRANSFER_PUBLIC_KEY_BASE_64_PATH);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        if (CollUtil.isNotEmpty(publicKeys)) {
+            TRANSFER_PUBLIC_KEY_BASE_64 = publicKeys.get(0);
+        }
     }
 
 }
